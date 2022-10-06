@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:include="layout :: htmlhead"></head>
+
+<body>
+
+    <a href="/" class="volte"> Voltar </a>
+    <div class="container">
+
+        <form th:action="@{/medico/(form)}" th:object="${medico}" method="POST">
+
+            <h1 class="text-center">Medico Novo</h1>
+
+            <input type="hidden" th:field="*{id}">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-3">
+                        <form>
+                            <label for="txtnome">Nome :</label>
+                            <input class="form-control" th:field="*{nome}" type="text" id="txtnome">
+                            <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="alert alert-danger" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-3">
+                        <form>
+                            <label for="txtCRM">CRM :</label>
+                            <input class="form-control" th:field="*{CRM}" type="text" id="txtCRM">
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label>Procedimento :</label>
+                    <div class="row">
+                        <div class="col-3">
+                            <select th:field="*{procedimentoId}" class="form-select">
+                                <option th:each="umProcedimento : ${listaProcedimentos}" th:value="${umProcedimento.id}"
+                                    th:text="${umProcedimento.descricao}"></option>
+                        </div>
+                    </div>
+                    </select>
+                    <button type="submit" name="incprocedimento" class="btn btn-primary">Incluir Procedimento</button>
+                </div>
+                <div class="form-group">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Procedimento</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="umProcedimento, stat : *{listaProcedimentos}">
+                                <td th:text="${umProcedimento.descricao}"></td>
+                                <input type="hidden" th:field="*{listaProcedimentos[__${stat.index}__].id}" />
+                                <input type="hidden" th:field="*{listaProcedimentos[__${stat.index}__].descricao}" />
+                                <td>
+                                    <button type="submit" name="removeitem" th:value="__${stat.index}__"
+                                        class="btn btn-primary">Remover</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+
+                <div>
+                    <button type="submit" name=save class="btn btn-primary">Enviar</button>
+                </div>
+
+
+
+
+        </form>
+    </div>
+
+    </div>
+
+    <div th:include="layout :: footer">(footer)</div>
+
+
+</body>
+
+</html>
+
+
+
+
+<div th:fragment="footer" id="footer">
+    <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.min.js}"></script>
+</div>
+</body>
+
+</html>

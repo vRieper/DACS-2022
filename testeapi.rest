@@ -1,0 +1,195 @@
+# @name loginAPI
+POST http://localhost:8081/api/v1/auth/signin
+content-type: application/json
+
+{
+"usuario": "admin", "senha": "admin"
+}
+
+###
+@token = {loginAPI.response.body.*}
+
+###
+GET http://localhost:8081/api/v1/pacientes/
+Authorization: Bearer {{token}}
+###
+GET http://localhost:8081/api/v1/pacientes/1
+Authorization: Bearer {{token}}
+###
+GET http://localhost:8081/api/v1/pacientes/nome/chi
+Authorization: Bearer {{token}}
+###
+GET http://localhost:8081/api/v1/pacientes/?nome=ca
+Authorization: Bearer {{token}}
+###
+
+POST http://localhost:8081/api/v1/pacientes
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "nome": "Carlito",
+    "sexo": "Masculino",
+    "dataNascimento": "2022-08-17T00:00:00"
+}
+
+###
+
+POST http://localhost:8081/api/v1/pacientes
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "id" : 1,
+    "nome": "Carlito",
+    "sexo": "Masculino",
+    "dataNascimento": "2022-08-17T00:00:00"
+}
+
+###
+
+POST http://localhost:8081/api/v1/pacientes
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "nome": "Chiquita",
+    "sexo": "Feminino",
+    "dataNascimento": "2022-08-16T00:00:00"
+}
+
+
+###
+
+PUT http://localhost:8081/api/v1/pacientes/66
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "nome": "Carlito da silva",
+    "sexo": "Masculino",
+    "dataNascimento": "2022-08-17T00:00:00"
+}
+
+###
+
+DELETE http://localhost:8081/api/v1/pacientes/33
+Authorization: Bearer {{token}}
+
+###
+
+
+
+
+###CIDADE
+
+
+GET http://localhost:8081/api/v1/cidades/
+Authorization: Bearer {{token}}
+
+###
+
+GET  http://localhost:8081/api/v1/cidades/1
+Authorization: Bearer {{token}}
+content-type: application/json
+
+
+
+##Consultas 
+###
+
+GET http://localhost:8081/api/v1/consultas/
+Authorization: Bearer {{token}}
+
+###
+POST http://localhost:8081/api/v1/consultas/
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "data":  "2022-08-17T00:00:00",
+    "status": "Masculino",
+    "paciente":"Carlito da Silva",
+    "medicoResponsavel":"Maikolll"
+}
+### 
+PUT http://localhost:8081/api/v1/consultas/
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "data":  "2022-08-17T00:00:00",
+    "status": "Masculino",
+    "paciente":"Carlito da Silva"
+}
+
+
+
+###Medico
+
+###
+GET http://localhost:8081/api/v1/medicos/
+Authorization: Bearer {{token}}
+###
+GET http://localhost:8081/api/v1/medicos/68
+Authorization: Bearer {{token}}
+###
+POST http://localhost:8081/api/v1/medicos
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "crm": "0001",
+    "nome":"Carlito da Silva"
+}
+###
+DELETE http://localhost:8081/api/v1/medicos/34
+Authorization: Bearer {{token}}
+
+###
+
+GET http://localhost:8081/api/v1/medicos/nome/Carlito da Silva
+Authorization: Bearer {{token}}
+###
+PUT http://localhost:8081/api/v1/medicos/67
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "crm": "0001",
+    "nome":"Carlito da Silva"
+
+}
+
+###
+
+
+GET http://localhost:8081/api/v1/consultas/
+Authorization: Bearer {{token}}
+
+###
+
+
+POST http://localhost:8081/api/v1/consultas
+content-type: application/json
+Authorization: Bearer {{token}}
+{
+   "data":  "2022-08-17T00:00:00",
+    "status": "",
+    "paciente":{
+        "id": 34
+    },
+       "MedicoResponsavel":{
+        "id": 97 
+    },
+    "listaProcedimentos": []
+}
+
+
+
+###
+GET  http://localhost:8081/api/v1/planosDeSaude
+content-type: application/json
+Authorization: Bearer {{token}}
+
+

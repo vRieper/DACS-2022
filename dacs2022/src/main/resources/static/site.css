@@ -1,0 +1,78 @@
+.text-center {
+  text-align: center;
+}
+
+.botao-direita {
+  justify-content: center;
+}
+@font-face {
+  font-family: "pixelart";
+  src: url(TTF/dogicapixel.ttf);
+}
+
+body {
+  display: block;
+  font-family: pixelart, monospace;
+  background: rgb(222, 159, 211);
+
+}
+
+.texto {
+  justify-content: space-between;
+  align-items: center;
+  border: 3px solid rgb(0, 0, 0);
+  width: 85%;
+  margin: 0 auto;
+  padding: 0.5cm;
+  text-indent: 2%;
+
+  border-radius: 3%;
+}
+
+.Navegaçao {
+  background-color: rgb(231, 231, 63);
+  display: flex;
+  justify-content: space-around;
+  border: 3px solid rgb(0, 0, 0);
+  margin: 0 auto;
+}
+
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
+  font-size: 20px;
+  color: #000;
+}
+a:hover {
+  font-size: 21px;
+  color: #000;
+  font-weight: bold;
+}
+
+.volte {
+  display: flex;
+  border: 2px solid rgb(0, 0, 0);
+  width: 10%;
+  padding-left: 15px;
+  background-color: rgb(231, 231, 63);
+}
+
+.imagens{
+  display: block;
+  justify-content: space-between;
+  margin-bottom: auto;
+
+}
+
+
+#avatar {
+  width: 10px;
+  height: 10px;
+  margin-bottom: 2rem
+}
+
+.title.jsx-7d0c093f5e518fb2 {
+  line-height: 1;
+  font-size: 2rem
+}
